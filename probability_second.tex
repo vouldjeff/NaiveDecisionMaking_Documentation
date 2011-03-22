@@ -1,0 +1,14 @@
+In the previous chapter we made a brief description of what horse betting is. Most likely the question how do we measure the odds of a certain horse arised.
+
+In this section we set out some rules which we call 'probability theory'. It is the separate job of statisticians to attempt to apply this theory to the real world and that of philosophers to worry why such an application can be made.
+
+We start with a non-empty finite set $\Omega$ called the \textit{probability space}. For example a horse race with $n$ horses:
+\[ \Omega = \lbrace \omega_1, \omega_2, ... \omega_n \rbrace \]
+with $\omega_j$ the point corresponding to the $j$th horse winning.
+Also there is a function $p : \Omega \rightarrow \mathbb{R}$ such that $p(\omega)\geq 1$ for every $\omega\in\Omega$ and:
+\[ \sum\limits_{\omega\in\Omega} p(\omega) = 1. \]
+With other words the sum of all the points` probabilities within a single space must be $1$.
+
+Let $A$ be a subset of $\Omega$ then:
+\[ Pr(A) = \sum\limits_{\omega\in A} p(\omega) \]
+We call $Pr(A)$ the probability of event $A$.
