@@ -1,9 +1,14 @@
 \documentclass[12pt, a4paper,leqno]{report}
 \usepackage[utf8]{inputenc}
 \usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{amssymb, amsmath}
 
 \title{Naïve Decision Making}
 \author{Dimitar Vouldjeff}
+
+\newtheorem{lemma}{Lemma}
+\newtheorem{exercise}{Exercise}
 
 \begin{document}
 \maketitle
@@ -18,9 +23,61 @@
 \input{probability_first}
 
 \section{Short Probability Theory}
-\input{probability_second}
+In the previous chapter we made a brief description of what horse betting is. Most likely the question how do we measure the odds of a certain horse arised.
+
+In this section we set out some rules which we call 'probability theory'. It is the separate job of statisticians to attempt to apply this theory to the real world and that of philosophers to worry why such an application can be made.
+
+We start with a non-empty finite set $\Omega$ called the \textit{probability space}. For example a horse race with $n$ horses:
+\[ \Omega = \lbrace \omega_1, \omega_2, \dots\omega_n \rbrace \]
+with $\omega_j$ the point corresponding to the $j$th horse winning.
+Also there is a function $p : \Omega \rightarrow \mathbb{R}$ such that $p(\omega)\geq 1$ for every $\omega\in\Omega$ and:
+\[ \sum\limits_{\omega\in\Omega} p(\omega) = 1. \]
+With other words the sum of all the points` probabilities within a single space must be $1$.
+
+Let $A$ be a subset of $\Omega$ then:
+\[ Pr(A) = \sum\limits_{\omega\in A} p(\omega) \]
+We call $Pr(A)$ the probability of event $A$.
+
+\begin{list}{•}{\textbf{Properties}:}
+	\item For every event $A$, $1 \leq Pr(A) \leq 0$.
+	\item If $A$ and $B$ are disjointed events, then $Pr(A\cup B) = Pr(A) + Pr(B)$.
+\end{list}
 
 \section{Combinatorics}
-\input{probability_combinatorics}
+Probability becomes much easier to understand when consider some basic models.
+One of them is how for example a deck of $n$ cards can be dealt. The first card may be any of the $n$ cards, the second any of the remaining $n - 1$ cards and so on. Thus there are:
+\[ n! = n(n - 1)(n - 2)\dots 1 \]
+ways of dealing the cars. This is called permutation of $n$ elements. And by definition $0! = 1$.
+
+Assuming the probability of all the deals to be the same, we are obtaining a probability space $\Omega$ with $n!$ elements such that for every $\omega\in\Omega$:
+\[ Pr(\lbrace\omega\rbrace) = \frac{1}{n!} \]
+
+But what if we want to know how many 5 cards poker hands are there from a 52 cards deck?
+
+\begin{lemma}
+	If a set has $n$ elements the number of $k$ distinct combination is:
+	\[ \binom{n}{k} = \frac{n!}{k!(n-k)!} \]
+	\begin{proof}
+		We can also use $\binom{n}{k}$ as the coefficient of $x^ny^{n-k}$ in $(x+y)^n$, or in other words
+		\[ (x+y)^n = \binom{n}{0}x^n + \binom{n}{1}x^{n-1}y + \binom{n}{2}x^{n-2}y^2 +\dots + \binom{n}{n}y^n. \]
+		Because of that fact $\binom{n}{k}$ is called a \textit{binomial coefficient}.
+	\end{proof}
+\end{lemma}
+
+\begin{exercise}
+	 Let we have an $m$ sided die with $b$ of them coloured blue and the rest - red. If we throw the die $n$ times the probability of any sequence with exactly $r$ blue sides is $p^r(1-p)^{n-r}$ where $p = \frac{b}{m}$.
+	 If $A_r$ is this event, then
+	 \[ Pr(A_r) = \binom{n}{r}p^r(1-p)^{n-r}. \]
+	 \begin{proof}
+	 	Each blue face can arise in $b$ ways and each red in $m-b$ and
+	 	\[ \underbrace{b\times b\times\dots\times b}_{\mbox{r times}}\times \underbrace{(m-b)\times (m-b)\times\dots\times (m-b)}_{\mbox{n-r times}} = b^r(m-b)^{n-r} \]
+	 	We know that there are $\binom{n}{r}$ different ways of arranging the aforementioned sequence, so
+	 	\[ Pr(A_r) = \binom{n}{r}p^r(1-p)^{n-r} \]
+	 	as stated.
+	 \end{proof}
+\end{exercise}
+
+\section{Law of large numbers}
+
 
 \end{document}
