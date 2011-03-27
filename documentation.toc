@@ -1,8 +1,12 @@
 \contentsline {chapter}{\numberline {1}Introduction}{2}{chapter.1}
 \contentsline {chapter}{\numberline {2}Probability}{3}{chapter.2}
-\contentsline {section}{\numberline {2.1}Blah}{3}{section.2.1}
-\contentsline {section}{\numberline {2.2}Short probability theory}{3}{section.2.2}
-\contentsline {section}{\numberline {2.3}Combinatorics}{4}{section.2.3}
+\contentsline {section}{\numberline {2.1}Short probability theory}{3}{section.2.1}
+\contentsline {section}{\numberline {2.2}Combinatorics}{4}{section.2.2}
 \contentsline {paragraph}{\normalfont {\textit {Solution}}.}{4}{section*.2}
-\contentsline {section}{\numberline {2.4}Random variables}{5}{section.2.4}
-\contentsline {section}{\numberline {2.5}Law of large numbers}{6}{section.2.5}
+\contentsline {paragraph}{\normalfont {\textit {Solution}}.}{5}{section*.3}
+\contentsline {section}{\numberline {2.3}Random variables}{5}{section.2.3}
+\contentsline {section}{\numberline {2.4}Conditional probability}{6}{section.2.4}
+\contentsline {paragraph}{\normalfont {\textit {Solution}}.}{6}{section*.4}
+\contentsline {section}{\numberline {2.5}Independent events}{6}{section.2.5}
+\contentsline {paragraph}{\normalfont {\textit {Solution}}.}{7}{section*.5}
+\contentsline {section}{\numberline {2.6}Law of large numbers}{7}{section.2.6}

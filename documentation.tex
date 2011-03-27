@@ -10,6 +10,7 @@
 
 \newtheoremstyle{normal}{}{}{}{}{\normalfont\bfseries}{.}{ }{}
 
+\newtheorem{definition}{Definition}[chapter]
 \newtheorem{lemma}{Lemma}[chapter]
 \theoremstyle{normal}
 \newtheorem{exercise}{Exercise}[chapter]
@@ -26,16 +27,10 @@
 	\tableofcontents
 	
 	\chapter{Introduction}
-	\input{introduction}
 	
 	\chapter{Probability}
 	
-	\section{Blah}
-	\input{probability_first}
-	
 	\section{Short probability theory}
-	In the previous chapter we made a brief description of what horse betting is. Most likely the question how do we measure the odds of a certain horse arised.
-	
 	In this section we set out some rules which we call 'probability theory'. It is the separate job of statisticians to attempt to apply this theory to the real world and that of philosophers to worry why such an application can be made.
 	
 	We start with a non-empty finite set $\Omega$ called the \textit{probability space}. For example a horse race with $n$ horses:
@@ -90,13 +85,13 @@
 		 Let we have an $m$ sided die with $b$ of them coloured blue and the rest - red. If we throw the die $n$ times the probability of any sequence with exactly $r$ blue sides is $p^r(1-p)^{n-r}$ where $p = \dfrac{b}{m}$.
 		 If $A_r$ is this event, then
 		 \[ Pr(A_r) = \binom{n}{r}p^r(1-p)^{n-r}. \]
-		 \begin{proof}
+		 \begin{solution}
 		 	Each blue face can arise in $b$ ways and each red in $m-b$ and
 		 	\[ \underbrace{b\times b\times\dots\times b}_{\mbox{r times}}\times \underbrace{(m-b)\times (m-b)\times\dots\times (m-b)}_{\mbox{n-r times}} = b^r(m-b)^{n-r} \]
 		 	We know that there are $\dbinom{n}{r}$ different ways of arranging the aforementioned sequence, so
 		 	\[ Pr(A_r) = \binom{n}{r}p^r(1-p)^{n-r} \]
 		 	as stated.
-		 \end{proof}
+		 \end{solution}
 	\end{exercise}
 	
 	\section{Random variables}
@@ -121,7 +116,38 @@
 	For example the expectation in Example \ref{ex:die_x} is
 	\[ \expect X = 1.\frac{1}{6} + 2.\frac{1}{6} + 3.\frac{1}{6} + 4.\frac{1}{6} + 5.\frac{1}{6} + 6.\frac{1}{6} = 3.5 . \]
 	
+	\section{Conditional probability}	
+	When in a random experiment the event $B$ is known to have occurred, the possible outcomes of the experiment are reduced to B, and hence the probability of the occurrence of $A$ is changed from the unconditional probability into the conditional probability given $B$.
+	
+	Let $\Omega$ be a probability space with associated probability $Pr$. If the event $B$ occurred, $A,B\in\Omega$ and $Pr(B) > 0$
+	\[ Pr(A|B) = \frac{Pr(A\cap B)}{Pr(B)} \] 
+	
+	\begin{example}
+		What is the probability that the total of two dice will be greater than 8, given the first die is a 6?
+		\begin{solution}
+			Let $A, B\in\Omega$, $B$ is the event the first die is a 6 and $A$ is the event the total is greater than 8.
+			$Pr(B) = \frac{1}{6}$ and $Pr(A) = \frac{4}{6}$, thus
+			\[ Pr(A|B) = \frac{Pr(A\cap B)}{Pr(B)} = \frac{\frac{1}{6}.\frac{4}{6}}{\frac{1}{6}} = \frac{2}{3} \]
+		\end{solution}
+	\end{example}
+	
+	\section{Independent events}
+	In probability theory, to say that two events are \textit{independent} intuitively means that the occurrence of one event makes it neither more nor less probable that the other occurs.
+	Let $\Omega$ be a probability space with associated probability $Pr$.
+	We say that two events $A, B\in\Omega$ are independent if
+	\[ Pr(A\cap B) = Pr(A)Pr(B). \]
+	
+	\begin{example}
+		A die is tossed twice. Find the probability of getting a 4 or 5 on the first toss and a 1, 2, or 3 in the second toss.
+		\begin{solution}
+			Let $A, B\in\Omega$ with probability $Ar$ and $A$ is the event of the first toss, $B$ of the second. Thus $Pr(A) = \frac{1}{3}$ and $Pr(B) = \frac{1}{2}$. The two events are obviously independent, so
+			\[ Pr(A\cap B) = Pr(A)Pr(B) = \frac{1}{3}.\frac{1}{2} = \frac{1}{6}. \] 
+		\end{solution}
+	\end{example}
+	
 	\section{Law of large numbers}
 	
+
+
 
 \end{document}
