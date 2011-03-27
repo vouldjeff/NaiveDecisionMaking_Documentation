@@ -4,16 +4,17 @@ This is also my first TeX project. To be honest I prefere Microsoft Office 2010,
 To be covered
 =============
 
-- Probability Theory
-  - Stuff
-  - Kelly criterion
-  - Random variables
-  - Convergence of random variables
-  - Law of large numbers
-- Combinatorics
-  - Permutations
-  - Combination
-  - Rule of sum
-  - Rule of product
+- Independence
+- Law of large numbers (weak and mabey strong)
+- Kelly`s criterion
+- Examples and excercises
+
+- Shortest path problems
+- Sorting problems
+- Google & Facebook interviews` questions
+
+- Introduction
+- Conclusion
+- Resources
    
 
