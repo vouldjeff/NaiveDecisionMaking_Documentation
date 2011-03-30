@@ -5,6 +5,7 @@
 \usepackage{amssymb, amsmath}
 \usepackage[bookmarksnumbered=true,bookmarksopen=true, pdfborder={0 0 0}]{hyperref}
 \hypersetup{pdfborder={0 0 0}}
+\usepackage{graphicx}
 
 \newenvironment{solution}{\paragraph{\normalfont{\textit{Solution}}.}}{\hfill\null$\square$}
 
@@ -29,7 +30,6 @@
 	\chapter{Introduction}
 	
 	\chapter{Probability}
-	
 	\section{Short probability theory}
 	In this section we set out some rules which we call 'probability theory'. It is the separate job of statisticians to attempt to apply this theory to the real world and that of philosophers to worry why such an application can be made.
 	
@@ -42,7 +42,8 @@
 	
 	Let $A$ be a subset of $\Omega$ then:
 	\[ Pr(A) = \sum\limits_{\omega\in A} p(\omega) \]
-	We call $Pr(A)$ the probability of event $A$.\\
+	We call $Pr(A)$ the probability of event $A$ and 
+	\[ Pr(A) = \frac{\text{the number of ways an event can occur}}{\text{the number of all the events}} \]\\
 	\begin{list}{$\bullet$}{\textbf{Properties:}}
 		\item For every event $A$, $1 \leq Pr(A) \leq 0$.
 		\item If $A$ and $B$ are disjointed events, then $Pr(A\cup B) = Pr(A) + Pr(B)$.
@@ -94,29 +95,7 @@
 		 \end{solution}
 	\end{exercise}
 	
-	\section{Random variables}
-	In probability theory and statistics a \textit{random variable} is function which maps events of outcomes to values (e.g. real numbers). 
-	
-	\begin{example}
-		\label{ex:die_x}
-		A random variable can also be used to describe the process of rolling a die and the possible outcomes. Take the set $\Omega = \lbrace 1, 2, 3, 4, 5, 6\rbrace$ as the state space, defining the random variable $X$ equal to the number rolled.
-		In this case
-		\[ X(\omega) = \begin{cases}
-			1, & \text{if a 1 is rolled} ,\\
-			2, & \text{if a 2 is rolled} ,\\
-			3, & \text{if a 3 is rolled} ,\\
-			4, & \text{if a 4 is rolled} ,\\
-			5, & \text{if a 5 is rolled} ,\\
-			6, & \text{if a 6 is rolled} .
-		\end{cases} \]
-	\end{example}
-	
-	Every random variable has its \textit{expectation} written $\expect X$ and
-	\[ \expect X = \sum\limits_{\omega\in \Omega} p(\omega) X(\omega). \]
-	For example the expectation in Example \ref{ex:die_x} is
-	\[ \expect X = 1.\frac{1}{6} + 2.\frac{1}{6} + 3.\frac{1}{6} + 4.\frac{1}{6} + 5.\frac{1}{6} + 6.\frac{1}{6} = 3.5 . \]
-	
-	\section{Conditional probability}	
+		\section{Conditional probability}	
 	When in a random experiment the event $B$ is known to have occurred, the possible outcomes of the experiment are reduced to B, and hence the probability of the occurrence of $A$ is changed from the unconditional probability into the conditional probability given $B$.
 	
 	Let $\Omega$ be a probability space with associated probability $Pr$. If the event $B$ occurred, $A,B\in\Omega$ and $Pr(B) > 0$
@@ -143,11 +122,122 @@
 			Let $A, B\in\Omega$ with probability $Ar$ and $A$ is the event of the first toss, $B$ of the second. Thus $Pr(A) = \frac{1}{3}$ and $Pr(B) = \frac{1}{2}$. The two events are obviously independent, so
 			\[ Pr(A\cap B) = Pr(A)Pr(B) = \frac{1}{3}.\frac{1}{2} = \frac{1}{6}. \] 
 		\end{solution}
+	\end{example}	
+	
+	\section{Random variables}
+	In probability theory and statistics a \textit{random variable} is function which maps events of outcomes to values.
+	There are two types of random variables - \textit{discrete} and \textit{continuous}. A discrete random variable maps outcomes to values of a countable set (e.g. integers), while continuous maps to values of uncountable sets (e.g. real numbers).
+	
+	\begin{example}
+		\label{ex:die_x}
+		A discrete random variable can be used to describe the process of rolling a die and the possible outcomes. Take the set $\Omega = \lbrace 1, 2, 3, 4, 5, 6\rbrace$ as the state space, defining the random variable $X$ equal to the number rolled.
+		In this case
+		\[ X(\omega) = \begin{cases}
+			1, & \text{if a 1 is rolled} ,\\
+			2, & \text{if a 2 is rolled} ,\\
+			3, & \text{if a 3 is rolled} ,\\
+			4, & \text{if a 4 is rolled} ,\\
+			5, & \text{if a 5 is rolled} ,\\
+			6, & \text{if a 6 is rolled} .
+		\end{cases} \]
 	\end{example}
 	
-	\section{Law of large numbers}
+	\begin{example}
+		The following random variable is continuous
+		\[ X = \text{the exact amount of rain tomorrow}. \]
+	\end{example}
 	
+	\noindent Every random variable has its \textit{expectation} (or \textit{expected value}) written $\expect X$ or $\mu$ and
+	\[ \expect X = \sum\limits_{\omega\in \Omega} p(\omega) X(\omega). \]
+	For example the expectation in Example \ref{ex:die_x} is
+	\[ \expect X = 1.\frac{1}{6} + 2.\frac{1}{6} + 3.\frac{1}{6} + 4.\frac{1}{6} + 5.\frac{1}{6} + 6.\frac{1}{6} = 3,5 . \]	
+	
+	\section{Law of large numbers}
+	The \textit{Law of large numbers} is one of the most intuitive laws in mathematics and probability.
+	Let $X$ is a random variable and $\expect X = \mu$ the expected value.
+	\[ \overline{X}_n = \frac{x_1 + x_2 + \dots + x_n}{n} \]
+	is called \textit{sample mean} and the law says that
+	\[ \overline{X}_n \to \mu \ \ \ \text{when} \ \ \ n\to\infty \]
+	
+	And Because the law of large numbers is so applicable it is very often misunderstood. Let us consider the following scenario. You are tossing a coin with a random variable $X$ (1 for head, 0 for trail) and thus the expected value $\mu = 0.5$. After a finite number of tosses (e.g. 10) the sample mean $\overline{X}_n = 0,8$. In such situations people tend to thing that the Gods of probability will somehow make the next few tosses to be trails in order to compensate (this perception is called \textit{the Gambler`s fallacy}). But that is usually not the case. What the law of large numbers says is "I do not care when the sample mean will converge to the expected value! You have a infinite number of tosses."
+	\begin{figure}[h!]
+		\caption{An illustration of coin tossing.}
+		\centering
+			\includegraphics[width=12cm]{graphic.png}
+	\end{figure}	
+	
+	\section{Kelly criterion}
+	The \textit{Kelly Criterion} is used to determine what amount of your money to bet when you know the odds. In most gambling and investing the Kelly strategy will do better than any essentially different strategy long term. This simple formula stands behind the success of world known investors like Worren Buffett.
+	
+	Imagine you are betting on a coin flip. On heads if you bet 1\$ you will get 2\$ and on trails - you loose the dollar. Then $\mu = 0,5$ or $\mu = 50\%$, so how could you loose money in such a case? The answer is very simple - by betting to much and here Kelly comes to the rescue!
+	\[ K = \frac{pb - (1 - p)}{b} \]
+	where $K$ is the optimal percentage you should bet, $p$ is the odds you will win the bet, $b$ is the payout (in our case 2) and $1-p$ represents the odds you will loose. Let us calculate the best betting percentage
+	\[ K = \frac{0,5\times 2 - (1-0,5)}{2} = 0,25 \] 
+	If you bet more than 25\% your profit will grow, but slower, and if you bet more than 50\% (twice as much) you will experience \textit{over-betting}.
+	\begin{figure}[h!]
+		\caption{An illustration of the two main ways of betting.}
+		\centering
+			\includegraphics[width=12cm]{kelly.jpg}
+	\end{figure}
+	
+	\chapter{Statistics}
+	\section{Probability distribution function}
+	A mathematical function can be used to model the frequencies and probabilities of occurrences over time. A \textit{discrete probability distribution function} associates each possible value of a discrete random variable with it`s probability. The probabilities of a continuous random variable are modelled using \textit{continuous distribution functions}, also known as \textit{probability density functions}.
+	
+	\subsection{Binomial distribution}
+	In order to understand what a \textit{binomial distribution} is, first you have to be familiar with the \textit{binomial experiment}. A binomial experiment (or \textit{Bernoulli trial}) is a statistical experiment that has the following properties:
+	\begin{itemize}
+		\item The experiment consists of $n$ repeated trials.
+		\item Each of the trials can result in success or failure.
+		\item The probability on success is the same for every trials.
+		\item The trials are independent.
+	\end{itemize}
+	Another important thing to know is that a \textit{binomial random variable} represents the number of successes in $n$ repeated trials of a binomial experiment. The \textit{probability distribution} of a binomial random variable is called a \textit{binomial distribution}.
 
+	\begin{example}
+		You are shooting at a target and the possibility of hitting it is $0,6$ for example. We have a binomial random variable 
+		\[ X = \text{the number of successful shootings in } n = 5 \text{ trials}. \] 
+		Make a binomial distribution graph.
+		\begin{solution}
+			In order to make the graph we first need to know the probability for each of the random variable`s values.		
+			\[\begin{split}
+  				Pr(X = 0) = & \textit{number of such cases } \times \textit{ probability of each case} \\
+   				= & \binom{n}{0} \times \textit{ probability of success}^0 \times \textit{ probability of failure}^{n - 0} \\
+   				= & 1\times 1\times (1-0,6)^5 \\
+   				= & 0,0102 \\
+   				\\
+  				Pr(X = 1) = & \textit{number of such cases } \times \textit{ probability of each case} \\
+   				= & \binom{n}{1} \times \textit{ probability of success}^1 \times \textit{ probability of failure}^{n - 1} \\
+   				= & 5\times 0,6\times (1-0,6)^4 \\
+   				= & 0,0768 \\
+   				\\
+  				Pr(X = 2) = & \binom{n}{2} \times 0,6^2 \times 0,4^3 \\
+   				= & 0,2304 \\
+   				\\
+  				Pr(X = 3) = & \binom{n}{3} \times 0,6^3 \times 0,4^2 \\
+   				= & 0,3456 \\
+   				\\
+  				Pr(X = 4) = & \binom{n}{4} \times 0,6^4 \times 0,4^1 \\
+   				= & 0,2592 \\ 
+   				\\
+  				Pr(X = 5) = & \binom{n}{5} \times 0,6^5 \times 0,4^0 \\
+   				= & 0,0777
+			\end{split}\]
+			And then we make the graph
+			\begin{figure}[h!]
+				\caption{Binomial distribution graph.}
+				\centering
+					\includegraphics[width=12cm]{binomial_graph.png}
+			\end{figure}			
+			
+		\end{solution}
+	\end{example}	
+	
+	\subsection{Normal distribution}	
+	
+	
+	
+	\chapter{Conclusion}
 
 
 \end{document}
